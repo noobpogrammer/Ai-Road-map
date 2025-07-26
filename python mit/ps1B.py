@@ -8,15 +8,13 @@ amount_saved=0
 monthly_roi=(amount_saved)*(0.05/12)
 month=0
 while (amount_saved < down_payment_portion):
-    if(month%6==0):
-        yearly_salary=yearly_salary*semi_annual_raise
+    if(month%6==0 and month!=0):
+        yearly_salary=(yearly_salary*semi_annual_raise)+yearly_salary
         amount_saved_monthly=(yearly_salary*portion_saved)/12
-
-
-    else:
-     roi = amount_saved * (0.05 / 12)
-     amount_saved += amount_saved_monthly
-     amount_saved += roi
-     month += 1
+        
+    roi = amount_saved * (0.05 / 12)
+    amount_saved += amount_saved_monthly
+    amount_saved += roi
+    month += 1
 
 print(f"number of months : {month}")
